@@ -26,5 +26,4 @@ yarn-error.log*
 Thumbs.db
 
 # DB config
-config.js
 tayo-db-firebase-adminsdk-k9ki1-9a1ceb4563.json
