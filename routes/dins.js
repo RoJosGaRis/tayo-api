@@ -9,20 +9,20 @@ router.get("/", (req, res) => {
   res.send("Welcome to my API!");
 });
 
-router.post("/getDins", async (req, res) => {
-  const dinsRef = db.collection("dins");
-  try {
-    dinsRef.get().then((snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      res.send(data);
-    });
-  } catch (error) {
-    res.status(500).send({ msg: "Error getting din" });
-  }
-});
+// router.post("/getDins", async (req, res) => {
+//   const dinsRef = db.collection("dins");
+//   try {
+//     dinsRef.get().then((snapshot) => {
+//       const data = snapshot.docs.map((doc) => ({
+//         id: doc.id,
+//         ...doc.data(),
+//       }));
+//       res.send(data);
+//     });
+//   } catch (error) {
+//     res.status(500).send({ msg: "Error getting din" });
+//   }
+// });
 
 router.post("/addDin", async (req, res) => {
   const { name, createdBy } = req.body;
@@ -52,7 +52,7 @@ router.post("/getDins", async (req, res) => {
         id: doc.id,
         ...doc.data(),
       }));
-      res.send(data);
+      res.send({ dinList: data });
     });
   } catch (error) {
     res.status(500).send({ msg: "Error getting dins" });
