@@ -38,7 +38,7 @@ router.post("/getPosts", async (req, res) => {
       ...doc.data(),
       createdAt: doc.data().createdAt.toDate().toLocaleString(),
     }));
-    res.send(data);
+    res.send({ dinPostList: data });
   } catch (error) {
     res.status(500).send({ msg: "Error getting posts" });
   }
