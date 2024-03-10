@@ -44,4 +44,19 @@ router.post("/addDin", async (req, res) => {
   }
 });
 
+router.post("/getDins", async (req, res) => {
+  try {
+    const dinsRef = db.collection("dins");
+    dinsRef.get().then((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      res.send(data);
+    });
+  } catch (error) {
+    res.status(500).send({ msg: "Error getting dins" });
+  }
+});
+
 module.exports = router;
