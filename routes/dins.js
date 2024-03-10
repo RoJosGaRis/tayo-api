@@ -38,7 +38,7 @@ router.post("/addDin", async (req, res) => {
       createdBy,
       cantPosts: 0,
     });
-    res.send(name + " added successfully");
+    res.status(200).send({ name: name, createdBy: createdBy });
   } catch (error) {
     res.status(500).send({ msg: "Error adding din" });
   }
